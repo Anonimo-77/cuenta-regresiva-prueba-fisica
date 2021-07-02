@@ -1,0 +1,51 @@
+<html>
+<head>
+<meta charset="utf-8">
+<title>Cuenta regresiva prueba física</title>
+<style>
+#time {
+  font-family: "consolas";
+  font-weight: bold;
+  font-size: 32pt;
+  color: red;
+  position: absolute;
+  left: 0;
+  top: 50px;
+}
+</style>
+</head>
+<body>
+<label id="time">00:00:00</label>
+<script>
+let prueba = new Date(2021,7,5,15,40,0,0);
+setInterval(() => {
+	document.getElementById("time").style.left = ((window.innerWidth-document.getElementById("time").getBoundingClientRect().width)/2)+"px";
+  let dn = Date.now();
+  let diff = prueba-dn;
+  let dift = new Date(diff);
+  console.log(dift.getDate());
+  let h = dift.getHours();
+  if ((dift.getDate()-1) > 0) {
+  	h+=(dift.getDate()-1)*24;
+  }
+  let m = dift.getMinutes();
+  let s = dift.getSeconds();
+  h = h.toString();
+  m = m.toString();
+  s = s.toString();
+  if (h.length < 2) {
+  	h = "0"+h;
+  }
+  if (m.length < 2) {
+  	m = "0"+m;
+  }
+  if (s.length < 2) {
+  	s = "0"+s;
+  }
+  document.getElementById('time').innerHTML = h+":"+m+":"+s;
+  
+},1000)
+
+</script>
+</body>
+</html>
